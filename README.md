@@ -17,14 +17,9 @@ from: https://gitlab.com/lxchen-lab117/yolotalk/darknet-integration/
     $ cd path/to/your/projects
     # 請先使用Git管理您的專案
     $ git init
-    # 建立libs資料夾
-    $ mkdir -p ./libs
-    # 將libs資料夾作為python module
-    $ echo "" > libs/__init__.py
     # 下載本專案
-    $ git submodule add https://gitlab.com/lxchen-lab117/yolotalk/darknet-integration.git libs/darknet
+    $ git clone https://github.com/PCu1106/Virtual-Tactile-Paving.git
     # 安裝相依套件
-    $ cd libs/darknet
     $ pip install -r requirements.txt
     ```
 
