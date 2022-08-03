@@ -8,9 +8,8 @@ from: https://gitlab.com/lxchen-lab117/yolotalk/darknet-integration/
 
 這個部分將說明如何在您的專案使用本函式庫。
 
-1. 使用Linux系列的作業系統
+1. 請使用Unbuntu 18.04
 2. 安裝Python 3.6以上版本
-3. 將這個Repository作為git的submodule
 
     ```bash
     # 前往您的專案
