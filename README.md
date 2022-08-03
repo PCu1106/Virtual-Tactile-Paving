@@ -20,11 +20,14 @@ from: https://gitlab.com/lxchen-lab117/yolotalk/darknet-integration/
     # 下載本專案
     $ git clone https://github.com/PCu1106/Virtual-Tactile-Paving.git
     # 安裝相依套件
-    $ pip install -r requirements.txt
+    $ pip3 install -r requirements.txt
     ```
 
 ## B. 使用
     
+    ```bash
+    $ python3 SmartFence.py
+    ```
 完整的使用範例可以參見main.py。下面是簡單的說明 :
 
 ### 1. import
