@@ -10,7 +10,7 @@ import DAN
 
 # Note: this program can only run on Linux
 if __name__ == '__main__':
-    print('aaa')
+    print('bbb')
     LineNotify.line_notify('aaa')
     # Register
     #ServerURL = 'http://IP:9999'      #with non-secure connection
