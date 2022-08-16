@@ -38,7 +38,7 @@ if __name__ == '__main__':
         thresh=0.45,
         weights_file=utils.WEIGHTS_YOLO_V4_COCO,
         output_dir="./output",
-        use_polygon=True,
+        use_polygon=False,
         vertex=[(420,480), (490,480), (280,70), (270,70)],
         target_classes=["person"],
         draw_bbox=True,

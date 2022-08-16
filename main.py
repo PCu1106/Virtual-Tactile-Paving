@@ -8,7 +8,7 @@ from libs.deep_sort.wrapper import DEEP_SORT_ENCODER_MODEL_PATH_PERSON
 if __name__ == '__main__':
     # Define the variables
     yolo = YoloDevice(
-        video_url="rtsp://iottalk:iottalk2019@140.113.237.220:554/live2.sdp",
+        video_url="rtsp://192.168.10.100/video1.sdp",
         gpu=False,
         gpu_id=0,
         display_message=True,
@@ -43,11 +43,45 @@ if __name__ == '__main__':
                 The path of the stored frame. If `output_dir` is None, this parameter will be None too.
         """
         print("==========")
+        left_x=430
+        left_y=490
+        right_x=480
+        right_y=480
+        matrix=[[]]
         for det in bboxes:
             # You can push these variables to IoTtalk sever
             class_name = det.get_class_name()
             confidence = det.get_confidence()
             center_x, center_y = det.get_center()
+            
+            if det.get_obj_id()!=None:
+                id=det.get_obj_id()
+                id=int(id)
+                if (center_y-left_y)/(center_x-left_x)>0.5:    #人在格子右方
+                    print("靠左")
+                    if id>len(matrix)-1:
+                        for j in range(id-len(matrix)+2):
+                            matrix.append([])
+                    matrix[id]=[center_x,center_y]
+                elif (center_y-right_y)/(center_x-right_x)<0.5:   #人在格子左方
+                    print("靠右")
+                    if id>len(matrix)-1:
+                        for j in range(id-len(matrix)+2):
+                            matrix.append([])
+                    matrix[id]=[center_x,center_y]
+                else:                                   #人在格子內
+                    if id>len(matrix)-1:
+                        for j in range(id-len(matrix)+2):
+                            matrix.append([])
+                    if not matrix[id]:
+                        matrix.insert(id,[center_x,center_y])#新的id
+                    elif(matrix[id][1]-center_y)/(matrix[id][0]-center_x)<0.4|(matrix[id][1]-center_y)/(matrix[id][0]-center_x)>0.6:  #判斷斜率是否過大
+                        print("向右")
+                        matrix[id]=[center_x,center_y]
+                    else:
+                        print("向左")
+                        matrix[id]=[center_x,center_y]
+
             print(class_name, confidence, center_x, center_y, det.get_class_id(), det.get_obj_id())
         print("==========")
 
