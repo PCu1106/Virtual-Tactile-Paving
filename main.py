@@ -8,7 +8,7 @@ from libs.deep_sort.wrapper import DEEP_SORT_ENCODER_MODEL_PATH_PERSON
 if __name__ == '__main__':
     # Define the variables
     yolo = YoloDevice(
-        video_url="rtsp://iottalk:iottalk2019@140.113.237.220:554/live2.sdp",
+        video_url="rtsp://192.168.10.100/video1.sdp",
         gpu=False,
         gpu_id=0,
         display_message=True,

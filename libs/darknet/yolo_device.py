@@ -252,7 +252,8 @@ class YoloDevice:
             # Saving image
             img_path = None
             img = mat.getData()
-            if self.output_dir is not None and len(new_bbox) != 0:
+            # if self.output_dir is not None and len(new_bbox) != 0:
+            if True:
                 if self.draw_polygon:
                     self.__draw_polygon(img)
                 if self.draw_bbox:
