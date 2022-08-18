@@ -1,1 +1,4 @@
 output/
+libs/__pycache__/
+libs/darknet/__pycache__/
+libs/deep_sort/__pycache__/
