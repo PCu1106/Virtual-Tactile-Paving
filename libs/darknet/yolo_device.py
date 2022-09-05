@@ -1,3 +1,4 @@
+from http import client
 import os
 import cv2
 import numpy as np
@@ -87,7 +88,8 @@ class YoloDevice:
                  target_classes=None,
                  draw_bbox=False,
                  draw_polygon=False,
-                 enable_tracking=False):
+                 enable_tracking=False,
+                 client_socket=None):
         if gpu:
             os.environ["YOLOTALK_USE_GPU"] = "1"
             os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
@@ -123,6 +125,8 @@ class YoloDevice:
 
         self.__enable_tracking = enable_tracking
         self.__deep_sort_tracker = {}
+
+        self.client_socket = client_socket
 
     def enable_tracking(self, flag):
         self.__enable_tracking = flag
@@ -261,7 +265,7 @@ class YoloDevice:
                 img_path = self.__get_output_image_name(frame_id)
                 cv2.imwrite(img_path, img)
 
-            self.__listener(frame_id, img, new_bbox, img_path)
+            self.__listener(frame_id, img, new_bbox, img_path, self.client_socket)
 
         self.__prediction_listener = prediction_listener
         self.device.setPredictionListener(self.__prediction_listener)
